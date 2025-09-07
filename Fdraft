@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ClubX – The Future of Nigerian Nightlife</title>
+  <style>
+    /* Reset & base */
+    * {margin: 0; padding: 0; box-sizing: border-box;}
+    body {
+      font-family: Arial, sans-serif;
+      background: #0b0b0d;
+      color: white;
+      line-height: 1.6;
+    }
+    a {color: inherit; text-decoration: none;}
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+    .hero-video {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -2;
+    }
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: -1;
+    }
+
+    /* Navbar */
+    .navbar {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0,0,0,0.3);
+    }
+    .navbar .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #ffdd00;
+    }
+    .navbar ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+    .navbar ul li a:hover {
+      color: #ff0080;
+    }
+
+    .hero-content h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    .hero-content h1 span {
+      color: #ffdd00;
+    }
+    .hero-content p {
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+      color: #ccc;
+    }
+    .cta-buttons button {
+      margin: 10px;
+      padding: 12px 24px;
+      border: none;
+      background: linear-gradient(45deg, #ff0080, #ffdd00);
+      color: black;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: transform 0.2s;
+    }
+    .cta-buttons button:hover {
+      transform: scale(1.05);
+    }
+
+    /* Trending Clubs */
+    .trending {
+      padding: 60px 20px;
+      background: #111;
+      text-align: center;
+    }
+    .trending h2 {
+      margin-bottom: 20px;
+      font-size: 2rem;
+      color: #ffdd00;
+    }
+    .club-carousel {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+      padding: 20px;
+      scroll-snap-type: x mandatory;
+    }
+    .club-card {
+      background: #1a1a1d;
+      padding: 15px;
+      border-radius: 8px;
+      min-width: 220px;
+      flex: 0 0 auto;
+      scroll-snap-align: start;
+      text-align: left;
+    }
+    .club-card img {
+      width: 100%;
+      border-radius: 6px;
+      margin-bottom: 10px;
+    }
+    .club-card h3 {
+      margin-bottom: 5px;
+    }
+    .club-card button {
+      margin-top: 10px;
+      padding: 8px 16px;
+      background: #ff0080;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .club-card button:hover {
+      background: #ff3399;
+    }
+
+    /* Features */
+    .features {
+      display: flex;
+      justify-content: space-around;
+      padding: 60px 20px;
+      background: #0b0b0d;
+      text-align: center;
+      flex-wrap: wrap;
+    }
+    .feature {
+      flex: 1 1 200px;
+      margin: 10px;
+      background: #1a1a1d;
+      padding: 20px;
+      border-radius: 8px;
+    }
+    .feature h3 {
+      margin-bottom: 10px;
+      color: #ffdd00;
+    }
+
+    /* DJ Promo */
+    .dj-promo {
+      padding: 60px 20px;
+      background: #111;
+      text-align: center;
+    }
+    .dj-promo h2 {
+      margin-bottom: 10px;
+      font-size: 2rem;
+    }
+    .dj-promo button {
+      margin-top: 15px;
+      padding: 12px 24px;
+      border: none;
+      background: linear-gradient(45deg, #ffdd00, #ff0080);
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    /* Footer */
+    footer {
+      padding: 20px;
+      background: #0b0b0d;
+      text-align: center;
+      border-top: 1px solid #222;
+    }
+    .footer-links {
+      margin-top: 10px;
+    }
+    .footer-links a {
+      margin: 0 10px;
+      color: #ffdd00;
+    }
+
+    /* Responsive */
+    @media(max-width: 768px) {
+      .hero-content h1 {font-size: 2rem;}
+      .features {flex-direction: column;}
+    }
+  </style>
+</head>
+<body>
+  <!-- Hero Section -->
+  <header class="hero">
+    <video autoplay muted loop playsinline poster="assets/hero-poster.jpg" class="hero-video">
+      <source src="assets/hero.mp4" type="video/mp4">
+    </video>
+    <div class="overlay"></div>
+    <nav class="navbar">
+      <div class="logo">ClubX</div>
+      <ul>
+        <li><a href="#clubs">Clubs</a></li>
+        <li><a href="#djs">DJs</a></li>
+        <li><a href="#why">Why ClubX</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="hero-content">
+      <h1>Discover. Book. Flex.<br><span>The Future of Nigerian Nightlife</span></h1>
+      <p>Book VIP tables, hire DJs, and unlock exclusive offers.</p>
+      <div class="cta-buttons">
+        <button id="bookTable">Book a Table</button>
+        <button id="bookDJ">Book a DJ</button>
+        <button id="exploreClubs">Explore Clubs</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Trending Clubs -->
+  <section id="clubs" class="trending">
+    <h2>Trending Clubs</h2>
+    <div class="club-carousel">
+      <div class="club-card">
+        <img src="assets/quilox.jpg" alt="Quilox Club">
+        <h3>Quilox</h3>
+        <p>VI, Lagos • Avg VIP Spend: ₦1.5m+</p>
+        <button>Book Now</button>
+      </div>
+      <div class="club-card">
+        <img src="assets/cubana.jpg" alt="Cubana Club">
+        <h3>Cubana</h3>
+        <p>Lekki • Avg VIP Spend: ₦1.2m+</p>
+        <button>Book Now</button>
+      </div>
+      <div class="club-card">
+        <img src="assets/wbar.jpg" alt="WBar Club">
+        <h3>WBar</h3>
+        <p>Ikoyi • Avg VIP Spend: ₦900k+</p>
+        <button>Book Now</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose ClubX -->
+  <section id="why" class="features">
+    <div class="feature">
+      <h3>Trusted Bookings</h3>
+      <p>Escrow + QR entry</p>
+    </div>
+    <div class="feature">
+      <h3>Exclusive Access</h3>
+      <p>VIP-only offers</p>
+    </div>
+    <div class="feature">
+      <h3>All-in-One Hub</h3>
+      <p>Clubs + DJs</p>
+    </div>
+  </section>
+
+  <!-- Book a DJ -->
+  <section id="djs" class="dj-promo">
+    <h2>Need a DJ for your next night?</h2>
+    <p>Book from our registered DJs instantly.</p>
+    <button>Browse DJs</button>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact">
+    <p>© 2025 ClubX. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="#about">About Us</a>
+      <a href="#how">How It Works</a>
+      <a href="#privacy">Privacy Policy</a>
+    </div>
+  </footer>
+
+  <script>
+    // Interactivity
+    document.getElementById("bookTable").addEventListener("click", () => {
+      alert("Redirect to Book a Table flow...");
+    });
+    document.getElementById("bookDJ").addEventListener("click", () => {
+      alert("Redirect to Book a DJ flow...");
+    });
+    document.getElementById("exploreClubs").addEventListener("click", () => {
+      alert("Redirect to Clubs page...");
+    });
+  </script>
+</body>
+</html>

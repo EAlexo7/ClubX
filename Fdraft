@@ -3,300 +3,502 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ClubX – The Future of Nigerian Nightlife</title>
+  <title>9jaNova – Elevate Your Nightlife</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&display=swap" rel="stylesheet">
   <style>
-    /* Reset & base */
+    :root {
+      --primary: #0a1633;      /* Deep navy blue */
+      --primary-dark: #07102a; /* Even deeper navy */
+      --secondary: #1e2a4a;    /* Slightly lighter navy */
+      --accent: #3a5ca8;       /* Blue accent for CTAs */
+      --accent-light: #5e7fcf; /* Lighter blue for hover */
+      --white: #fff;
+      --muted: #bfc8db;
+    }
     * {margin: 0; padding: 0; box-sizing: border-box;}
     body {
-      font-family: Arial, sans-serif;
-      background: #0b0b0d;
-      color: white;
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: linear-gradient(135deg, var(--primary) 60%, var(--secondary) 100%);
+      color: var(--white);
       line-height: 1.6;
+      min-height: 100vh;
     }
     a {color: inherit; text-decoration: none;}
-
-    /* Hero Section */
-    .hero {
-      position: relative;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      text-align: center;
-      overflow: hidden;
-    }
-    .hero-video {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: -2;
-    }
-    .overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.5);
-      z-index: -1;
-    }
-
     /* Navbar */
-    .navbar {
-      position: absolute;
-      top: 0;
+    nav {
       width: 100%;
-      padding: 20px;
+      padding: 24px 48px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(0,0,0,0.3);
+      position: fixed;
+      top: 0;
+      left: 0;
+      background: rgba(10,22,51,0.92);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      transition: background 0.3s;
     }
-    .navbar .logo {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #ffdd00;
+    .logo {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 2px;
     }
-    .navbar ul {
+    nav ul {
       list-style: none;
       display: flex;
-      gap: 20px;
+      gap: 32px;
+      align-items: center;
     }
-    .navbar ul li a:hover {
-      color: #ff0080;
+    nav ul li a {
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--white);
+      transition: color .3s;
+      padding: 6px 0;
+      border-bottom: 2px solid transparent;
     }
-
+    nav ul li a:hover, nav ul li.active a {
+      color: var(--accent);
+      border-bottom: 2px solid var(--accent);
+    }
+    .nav-cta {
+      background: var(--accent);
+      color: var(--white);
+      padding: 10px 28px;
+      border-radius: 24px;
+      font-weight: 700;
+      font-size: 1rem;
+      border: none;
+      cursor: pointer;
+      margin-left: 18px;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover {
+      background: var(--accent-light);
+      color: var(--white);
+    }
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: var(--primary-dark);
+      position: relative;
+      padding-top: 120px;
+      padding-bottom: 60px;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--primary-dark) 70%, var(--secondary) 100%);
+      z-index: 0;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 32px 16px;
+    }
     .hero-content h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
-    .hero-content h1 span {
-      color: #ffdd00;
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 18px;
+      color: var(--white);
+      letter-spacing: 1px;
     }
     .hero-content p {
-      margin-bottom: 1.5rem;
-      font-size: 1.1rem;
-      color: #ccc;
+      font-size: 1.25rem;
+      color: var(--muted);
+      margin-bottom: 32px;
+      font-weight: 400;
     }
-    .cta-buttons button {
-      margin: 10px;
-      padding: 12px 24px;
+    .hero-cta {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+    .hero-cta button {
+      padding: 16px 36px;
       border: none;
-      background: linear-gradient(45deg, #ff0080, #ffdd00);
-      color: black;
-      font-weight: bold;
+      border-radius: 28px;
       cursor: pointer;
-      border-radius: 6px;
-      transition: transform 0.2s;
+      background: var(--accent);
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--white);
+      box-shadow: 0 4px 24px 0 rgba(58,92,168,0.15);
+      transition: background 0.2s;
     }
-    .cta-buttons button:hover {
-      transform: scale(1.05);
+    .hero-cta button:hover {
+      background: var(--accent-light);
     }
-
-    /* Trending Clubs */
-    .trending {
-      padding: 60px 20px;
-      background: #111;
+    /* Section base */
+    section {
+      padding: 90px 20px 60px 20px;
       text-align: center;
+      position: relative;
     }
-    .trending h2 {
-      margin-bottom: 20px;
-      font-size: 2rem;
-      color: #ffdd00;
+    section h2 {
+      font-size: 2.2rem;
+      margin-bottom: 18px;
+      color: var(--white);
+      font-weight: 700;
     }
+    section .section-desc {
+      color: var(--muted);
+      font-size: 1.1rem;
+      margin-bottom: 36px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    /* How it works */
+    .how-it-works {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin-top: 32px;
+    }
+    .step {
+      background: var(--secondary);
+      border-radius: 16px;
+      padding: 32px 24px;
+      flex: 1 1 220px;
+      max-width: 300px;
+      box-shadow: 0 2px 12px 0 rgba(10,22,51,0.08);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .step-icon {
+      font-size: 2.5rem;
+      margin-bottom: 18px;
+      color: var(--accent);
+    }
+    .step-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--white);
+    }
+    .step-desc {
+      color: var(--muted);
+      font-size: 1rem;
+    }
+    /* Trending Clubs */
     .club-carousel {
       display: flex;
-      gap: 20px;
+      gap: 24px;
       overflow-x: auto;
-      padding: 20px;
+      padding: 20px 0;
       scroll-snap-type: x mandatory;
+      justify-content: center;
     }
     .club-card {
-      background: #1a1a1d;
-      padding: 15px;
-      border-radius: 8px;
-      min-width: 220px;
       flex: 0 0 auto;
+      min-width: 240px;
+      background: var(--secondary);
+      border-radius: 12px;
+      padding: 18px;
       scroll-snap-align: start;
+      box-shadow: 0 2px 12px 0 rgba(10,22,51,0.10);
       text-align: left;
+      transition: transform 0.2s;
+    }
+    .club-card:hover {
+      transform: translateY(-8px) scale(1.03);
     }
     .club-card img {
       width: 100%;
-      border-radius: 6px;
-      margin-bottom: 10px;
+      border-radius: 8px;
+      margin-bottom: 12px;
+      height: 140px;
+      object-fit: cover;
     }
     .club-card h3 {
-      margin-bottom: 5px;
+      color: var(--white);
+      font-size: 1.1rem;
+      margin-bottom: 6px;
+    }
+    .club-card p {
+      color: var(--muted);
+      font-size: 0.98rem;
+      margin-bottom: 10px;
     }
     .club-card button {
-      margin-top: 10px;
-      padding: 8px 16px;
-      background: #ff0080;
+      padding: 8px 20px;
+      background: var(--accent);
       border: none;
-      border-radius: 4px;
+      border-radius: 6px;
       cursor: pointer;
+      color: var(--white);
+      font-weight: 600;
+      font-size: 1rem;
+      transition: background 0.2s;
     }
     .club-card button:hover {
-      background: #ff3399;
+      background: var(--accent-light);
+      color: var(--white);
     }
-
-    /* Features */
-    .features {
+    /* Testimonials */
+    .testimonials {
       display: flex;
-      justify-content: space-around;
-      padding: 60px 20px;
-      background: #0b0b0d;
-      text-align: center;
+      gap: 32px;
+      justify-content: center;
       flex-wrap: wrap;
+      margin-top: 36px;
     }
-    .feature {
-      flex: 1 1 200px;
-      margin: 10px;
-      background: #1a1a1d;
-      padding: 20px;
-      border-radius: 8px;
+    .testimonial {
+      background: var(--secondary);
+      border-radius: 16px;
+      padding: 28px 22px;
+      max-width: 320px;
+      box-shadow: 0 2px 12px 0 rgba(10,22,51,0.10);
+      text-align: left;
+      position: relative;
     }
-    .feature h3 {
-      margin-bottom: 10px;
-      color: #ffdd00;
+    .testimonial::before {
+      content: "“";
+      font-size: 3rem;
+      color: var(--accent);
+      position: absolute;
+      left: 18px;
+      top: 8px;
+      opacity: 0.15;
     }
-
+    .testimonial-text {
+      color: var(--muted);
+      font-size: 1.05rem;
+      margin-bottom: 18px;
+      margin-top: 8px;
+    }
+    .testimonial-user {
+      font-weight: 700;
+      color: var(--white);
+      font-size: 1rem;
+    }
     /* DJ Promo */
     .dj-promo {
-      padding: 60px 20px;
-      background: #111;
-      text-align: center;
+      background: linear-gradient(90deg, var(--secondary) 60%, var(--primary-dark) 100%);
+      border-radius: 18px;
+      margin: 0 auto 60px auto;
+      max-width: 900px;
+      padding: 48px 24px;
+      color: var(--white);
+      box-shadow: 0 2px 24px 0 rgba(10,22,51,0.08);
     }
     .dj-promo h2 {
-      margin-bottom: 10px;
-      font-size: 2rem;
+      color: var(--white);
     }
     .dj-promo button {
-      margin-top: 15px;
-      padding: 12px 24px;
+      margin-top: 18px;
+      padding: 14px 32px;
       border: none;
-      background: linear-gradient(45deg, #ffdd00, #ff0080);
-      border-radius: 6px;
+      background: var(--accent);
+      border-radius: 8px;
       font-weight: bold;
+      font-size: 1.1rem;
+      color: var(--white);
       cursor: pointer;
+      transition: background 0.2s;
     }
-
+    .dj-promo button:hover {
+      background: var(--accent-light);
+      color: var(--white);
+    }
     /* Footer */
     footer {
-      padding: 20px;
-      background: #0b0b0d;
+      background: var(--primary-dark);
+      padding: 36px 20px 24px 20px;
       text-align: center;
-      border-top: 1px solid #222;
+      border-top: 1px solid var(--secondary);
+      color: var(--muted);
+      font-size: 1rem;
+      margin-top: 40px;
     }
     .footer-links {
-      margin-top: 10px;
+      margin-bottom: 18px;
     }
     .footer-links a {
-      margin: 0 10px;
-      color: #ffdd00;
+      margin: 0 14px;
+      color: var(--white);
+      font-weight: 600;
+      font-size: 1.05rem;
+      transition: color 0.2s;
     }
-
-    /* Responsive */
-    @media(max-width: 768px) {
-      .hero-content h1 {font-size: 2rem;}
-      .features {flex-direction: column;}
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+    .newsletter {
+      margin: 24px auto 0 auto;
+      max-width: 340px;
+      display: flex;
+      gap: 0;
+      border-radius: 24px;
+      overflow: hidden;
+      background: var(--secondary);
+      box-shadow: 0 2px 8px 0 rgba(10,22,51,0.06);
+    }
+    .newsletter input[type="email"] {
+      flex: 1;
+      padding: 12px 16px;
+      border: none;
+      font-size: 1rem;
+      outline: none;
+      background: transparent;
+      color: var(--white);
+    }
+    .newsletter button {
+      padding: 12px 22px;
+      background: var(--accent);
+      color: var(--white);
+      border: none;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .newsletter button:hover {
+      background: var(--accent-light);
+      color: var(--white);
+    }
+    .socials {
+      margin-top: 18px;
+    }
+    .socials a {
+      margin: 0 10px;
+      color: var(--accent);
+      font-size: 1.3rem;
+      transition: color 0.2s;
+    }
+    .socials a:hover {
+      color: var(--accent-light);
+    }
+    @media (max-width: 900px) {
+      nav {padding: 18px 16px;}
+      .hero-content h1 {font-size: 2.2rem;}
+      .how-it-works, .club-carousel, .testimonials {flex-direction: column; gap: 24px;}
+      .dj-promo {padding: 32px 10px;}
     }
   </style>
+  <script src="https://kit.fontawesome.com/8e2e7b7e2e.js" crossorigin="anonymous"></script>
 </head>
 <body>
-  <!-- Hero Section -->
-  <header class="hero">
-    <video autoplay muted loop playsinline poster="assets/hero-poster.jpg" class="hero-video">
-      <source src="assets/hero.mp4" type="video/mp4">
-    </video>
-    <div class="overlay"></div>
-    <nav class="navbar">
-      <div class="logo">ClubX</div>
-      <ul>
-        <li><a href="#clubs">Clubs</a></li>
-        <li><a href="#djs">DJs</a></li>
-        <li><a href="#why">Why ClubX</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
+  <nav>
+    <div class="logo">9jaNova</div>
+    <ul>
+      <li class="active"><a href="#home">Home</a></li>
+      <li><a href="#clubs">Clubs</a></li>
+      <li><a href="#how">How it Works</a></li>
+      <li><a href="#dj">For DJs</a></li>
+    </ul>
+    <button class="nav-cta">Get Started</button>
+  </nav>
+  <section class="hero" id="home">
     <div class="hero-content">
-      <h1>Discover. Book. Flex.<br><span>The Future of Nigerian Nightlife</span></h1>
-      <p>Book VIP tables, hire DJs, and unlock exclusive offers.</p>
-      <div class="cta-buttons">
-        <button id="bookTable">Book a Table</button>
-        <button id="bookDJ">Book a DJ</button>
-        <button id="exploreClubs">Explore Clubs</button>
+      <h1>Elevate Your Nightlife in Nigeria</h1>
+      <p>Discover, book, and experience the best clubs, DJs, and exclusive events. 9jaNova is your all-access pass to unforgettable nights out.</p>
+      <div class="hero-cta">
+        <button>Explore Clubs</button>
+        <button>Book a Table</button>
       </div>
     </div>
-  </header>
-
-  <!-- Trending Clubs -->
-  <section id="clubs" class="trending">
+  </section>
+  <section id="how">
+    <h2>How It Works</h2>
+    <div class="section-desc">Plan your night in just a few taps. 9jaNova makes nightlife easy, social, and rewarding.</div>
+    <div class="how-it-works">
+      <div class="step">
+        <div class="step-icon"><i class="fas fa-search"></i></div>
+        <div class="step-title">Discover</div>
+        <div class="step-desc">Browse trending clubs, DJs, and events near you.</div>
+      </div>
+      <div class="step">
+        <div class="step-icon"><i class="fas fa-calendar-check"></i></div>
+        <div class="step-title">Book</div>
+        <div class="step-desc">Reserve tables, buy tickets, or join guestlists instantly.</div>
+      </div>
+      <div class="step">
+        <div class="step-icon"><i class="fas fa-glass-cheers"></i></div>
+        <div class="step-title">Enjoy</div>
+        <div class="step-desc">Show your QR code at the door and enjoy VIP treatment.</div>
+      </div>
+    </div>
+  </section>
+  <section id="clubs">
     <h2>Trending Clubs</h2>
+    <div class="section-desc">Handpicked venues for the ultimate party experience.</div>
     <div class="club-carousel">
       <div class="club-card">
-        <img src="assets/quilox.jpg" alt="Quilox Club">
-        <h3>Quilox</h3>
-        <p>VI, Lagos • Avg VIP Spend: ₦1.5m+</p>
+        <img src="club1.jpg" alt="Club Quilox">
+        <h3>Club Quilox</h3>
+        <p>Lagos' hottest nightlife spot.</p>
         <button>Book Now</button>
       </div>
       <div class="club-card">
-        <img src="assets/cubana.jpg" alt="Cubana Club">
+        <img src="club2.jpg" alt="Cubana">
         <h3>Cubana</h3>
-        <p>Lekki • Avg VIP Spend: ₦1.2m+</p>
+        <p>Experience luxury and fun.</p>
         <button>Book Now</button>
       </div>
       <div class="club-card">
-        <img src="assets/wbar.jpg" alt="WBar Club">
-        <h3>WBar</h3>
-        <p>Ikoyi • Avg VIP Spend: ₦900k+</p>
+        <img src="club3.jpg" alt="Escape">
+        <h3>Escape</h3>
+        <p>Unforgettable nights await.</p>
         <button>Book Now</button>
       </div>
     </div>
   </section>
-
-  <!-- Why Choose ClubX -->
-  <section id="why" class="features">
-    <div class="feature">
-      <h3>Trusted Bookings</h3>
-      <p>Escrow + QR entry</p>
-    </div>
-    <div class="feature">
-      <h3>Exclusive Access</h3>
-      <p>VIP-only offers</p>
-    </div>
-    <div class="feature">
-      <h3>All-in-One Hub</h3>
-      <p>Clubs + DJs</p>
+  <section id="testimonials">
+    <h2>What Partygoers Say</h2>
+    <div class="testimonials">
+      <div class="testimonial">
+        <div class="testimonial-text">Booking a table was so easy! We skipped the line and had the best night ever. Highly recommend 9jaNova!</div>
+        <div class="testimonial-user">– Ada, Lagos</div>
+      </div>
+      <div class="testimonial">
+        <div class="testimonial-text">I discovered new clubs and DJs I never knew about. The app is a game changer for nightlife in Nigeria.</div>
+        <div class="testimonial-user">– Tunde, Abuja</div>
+      </div>
+      <div class="testimonial">
+        <div class="testimonial-text">As a DJ, 9jaNova helped me get more gigs and connect with top venues. Love it!</div>
+        <div class="testimonial-user">– DJ Spinall</div>
+      </div>
     </div>
   </section>
-
-  <!-- Book a DJ -->
-  <section id="djs" class="dj-promo">
-    <h2>Need a DJ for your next night?</h2>
-    <p>Book from our registered DJs instantly.</p>
-    <button>Browse DJs</button>
+  <section id="dj" class="dj-promo">
+    <h2>Are You a DJ?</h2>
+    <p>Promote your brand, get booked for top events, and grow your fanbase with 9jaNova.</p>
+    <button>Join as DJ</button>
   </section>
-
-  <!-- Footer -->
-  <footer id="contact">
-    <p>© 2025 ClubX. All rights reserved.</p>
+  <footer>
     <div class="footer-links">
-      <a href="#about">About Us</a>
-      <a href="#how">How It Works</a>
-      <a href="#privacy">Privacy Policy</a>
+      <a href="#home">Home</a>|
+      <a href="#clubs">Clubs</a>|
+      <a href="#how">How it Works</a>|
+      <a href="#dj">For DJs</a>
     </div>
+    <form class="newsletter">
+      <input type="email" placeholder="Your email for updates" required>
+      <button type="submit">Subscribe</button>
+    </form>
+    <div class="socials">
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-x-twitter"></i></a>
+      <a href="#"><i class="fab fa-facebook"></i></a>
+    </div>
+    <div style="margin-top:18px;">&copy; 2025 9jaNova. All rights reserved.</div>
   </footer>
-
-  <script>
-    // Interactivity
-    document.getElementById("bookTable").addEventListener("click", () => {
-      alert("Redirect to Book a Table flow...");
-    });
-    document.getElementById("bookDJ").addEventListener("click", () => {
-      alert("Redirect to Book a DJ flow...");
-    });
-    document.getElementById("exploreClubs").addEventListener("click", () => {
-      alert("Redirect to Clubs page...");
-    });
-  </script>
 </body>
 </html>
